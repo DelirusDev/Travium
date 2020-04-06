@@ -1,0 +1,28 @@
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes (
+            'Main-Class' : 'delirusdev.travium.App',
+            'Implementation-Title' : project.name,
+            'Developer' : 'DelirusDev'
+        )
+    }
+
+    // create UBER Jar / Fat Jar
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+ 
+dependencies {
+    // use implementation instead of compile
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+}
+
+
