@@ -1,0 +1,9 @@
+{
+    "user":"Name",
+    "pass":"Password",
+    "world":"https://ts1.travian.de/",
+    "pauseClickMin":500,
+    "pauseClickMax":6000,
+    "pauseFarmMin":1200000,
+    "pauseFarmMax":1800000
+}

@@ -1,22 +1,29 @@
 # Travium
-Farmingbot for legendary browsergame Travian written in Java+Selenium
+Farmingbot for legendary browsergame **Travian** written in **Java+Selenium**
 
-## TODO
-// add time in output
-// read+write settings and farmlist from file (json)
-// add multiple troop support
-// Exceptions when Webelement is not found
-
-##Installation
+## Installing
 1. Install Chrome/Chromium driver for your browser
-1.1 View your browserversion -> chrome://version/
-1.2 Download driver -> https://chromedriver.storage.googleapis.com/index.html
-1.3 Extract archive
-1.4 Add folder to PATH variables
+* View your browserversion -> chrome://version/
+* Download driver -> https://chromedriver.storage.googleapis.com/index.html
+* Extract archive
+* Add folder to PATH variables
 
 2. Build and run
-2.1 Change userdata in Travium/src/main/java/delirusdev/travium/Travium.java
-2.2 Run "gradle build" in project folder
-2.3 Run "java -jar build/libs/Travium.java"
+* Run in project folder
+```
+gradle build
+```
+* Change "settings.json" and "farm.json"
+* Put "settings.json" and "farm.json" into "Travium.jar" folder
+* Run in project folder
+```
+java -jar build/libs/Travium.jar 
+```
 
 3. Have Fun!
+
+## TODOs
+* time output
+* exceptions when webelements not found
+* multiple troop support
+* GUI

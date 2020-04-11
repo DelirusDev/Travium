@@ -1,10 +1,12 @@
 package delirusdev.travium;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
     
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) throws InterruptedException, FileNotFoundException, IOException {
 
         Travium bot = new Travium();
         Scanner sc;

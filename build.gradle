@@ -21,8 +21,10 @@ repositories {
 }
  
 dependencies {
-    // use implementation instead of compile
+    // use implementation instead of compile ()
     implementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.3'
+
 }
 
 

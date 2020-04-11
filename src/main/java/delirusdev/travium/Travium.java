@@ -1,5 +1,7 @@
 package delirusdev.travium;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,27 +12,32 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 
 public class Travium {
-
-    private String user = "Username";
-    private String pass = "Password";
-	// Loginpage
-    private String world = "https://ts1.travian.de/";
+    private String user;
+    private String pass;
+    private String world;
     private WebDriver browser;
-    private int pauseClickMin = 500; // 0,5 Seconds
-    private int pauseClickMax = 6000; // 6 Seconds
-    private int pauseFarmMin = 1200000; // 20 Minutes
-    private int pauseFarmMax = 1800000; // 30 Minutes
-    private ArrayList<Integer> farmorder = new ArrayList<Integer>();
-    private int[][] farmlist = {
-		// {x,y,troopsId,amount}
-        {-3,5,1,5},
-        {-5,0,1,5},
-        {-7,-4,1,5}
-		// ...
-    };
+    private int pauseClickMin;
+    private int pauseClickMax;
+    private int pauseFarmMin;
+    private int pauseFarmMax;
 
-    Travium() {
+    private ArrayList<Integer> farmorder = new ArrayList<Integer>();
+    private int[][] farmlist;
+
+    Travium() throws FileNotFoundException, IOException{
         this.printMessage("Welcome to TBot!");
+
+        // Init settings and farmlist
+        Map<String, String> settings = Common.readSettings("settings.json");
+        this.user = settings.get("user");
+        this.pass = settings.get("pass");
+        this.world = settings.get("world");
+        this.pauseClickMin = Integer.parseInt(settings.get("pauseClickMin"));
+        this.pauseClickMax = Integer.parseInt(settings.get("pauseClickMax"));
+        this.pauseFarmMin = Integer.parseInt(settings.get("pauseFarmMin"));
+        this.pauseFarmMax = Integer.parseInt(settings.get("pauseFarmMin"));
+        this.farmlist = Common.readFarmlist("farm.json");
+
         browser = new ChromeDriver();
     }
 
@@ -40,7 +47,7 @@ public class Travium {
 
     private void pretendBeingHuman(int min, int max) throws InterruptedException {
         int waiting = (int)((Math.random() * ((max - min) + 1)) + min);
-        this.printMessage("I'm doing nothing the next: " + waiting + "ms");
+        this.printMessage("I'm doing nothing next: " + waiting + "ms");
         Thread.sleep(waiting);
     }
 
@@ -63,7 +70,7 @@ public class Travium {
         loginField.sendKeys(this.user);
         pretendBeingHuman(this.pauseClickMin, this.pauseClickMax);
         passwordField.sendKeys(this.pass);
-        pretendBeingHuman(this.pauseClickMin, this.pauseClickMax);  // Let the user actually see something!
+        pretendBeingHuman(this.pauseClickMin, this.pauseClickMax);
         submitButton.click();
         pretendBeingHuman(this.pauseClickMin, this.pauseClickMax);
         this.checkLoginStatus();
@@ -77,6 +84,7 @@ public class Travium {
             world+"statistiken.php",
             world+"messages.php"
         };
+        // get random link from linkList
         int randNum = (int)((Math.random() * ((4 - 0) + 1)) + 0);
         browser.get(linkList[randNum]);
         pretendBeingHuman(this.pauseClickMin, this.pauseClickMax);
@@ -124,6 +132,7 @@ public class Travium {
         }
 
         // shuffle farmllist
+        // Put name to settings
         int amountTroops = Integer.parseInt(troopsTable.get("Theutates Blitz"));
         this.shuffleFarmList();
         int counter = 1;
