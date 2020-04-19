@@ -3,6 +3,8 @@ package delirusdev.travium;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,6 +24,11 @@ class Common {
         ObjectMapper objectMapper = new ObjectMapper();
         int[][] map = objectMapper.readValue(file, new TypeReference<int[][]>(){});
         return map;
+    }
+
+    static String timeNow() {
+        LocalTime now = LocalTime.now();
+        return now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
 }

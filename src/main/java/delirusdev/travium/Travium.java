@@ -42,7 +42,7 @@ public class Travium {
     }
 
     private void printMessage(String message) {
-        System.out.println("===> " + message);
+        System.out.println("[" + Common.timeNow() + "] ===> " + message);
     }
 
     private void pretendBeingHuman(int min, int max) throws InterruptedException {
