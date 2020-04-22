@@ -26,6 +26,13 @@ class Common {
         return map;
     }
 
+    static String[] readTroopNames(String filename, String tribe) throws FileNotFoundException, IOException {
+        File file = new File(filename);
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, String[]> map = objectMapper.readValue(file, new TypeReference<Map<String, String[]>>(){});
+        return map.get(tribe);
+    }
+
     static String timeNow() {
         LocalTime now = LocalTime.now();
         return now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));

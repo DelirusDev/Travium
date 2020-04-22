@@ -17,6 +17,7 @@ public class App {
             System.out.println("2 - Go Farming");
             System.out.println("3 - Check login status");
             System.out.println("4 - Farm all night!");
+            System.out.println("5 - Print Settings");
             System.out.println("0 - Close Browser");
             System.out.print("What should I do next?: ");
 
@@ -35,6 +36,9 @@ public class App {
                     break;
                 case 4:
                     bot.farmAllNight();
+                    break;
+                case 5:
+                    bot.printSettings();
                     break;
                 default:
                     break;

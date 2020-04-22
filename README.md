@@ -14,7 +14,7 @@ Farmingbot for legendary browsergame **Travian** written in **Java+Selenium**
 gradle build
 ```
 * Change "settings.json" and "farm.json"
-* Put "settings.json" and "farm.json" into "Travium.jar" folder
+* Put "settings.json", "farm.json" and "troops{LANG}.json" into "Travium.jar" folder
 * Run in project folder
 ```
 java -jar build/libs/Travium.jar 
@@ -23,7 +23,5 @@ java -jar build/libs/Travium.jar
 3. Have Fun!
 
 ## TODOs
-* time output
-* exceptions when webelements not found
-* multiple troop support
+* queue for buildings
 * GUI

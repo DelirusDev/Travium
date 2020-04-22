@@ -1,0 +1,5 @@
+{
+    "romans":["Legionär", "Prätorianer", "Imperianer", "Equites Legati", "Equites Imperatoris", "Equites Caesaris","Rammbock", "Feuerkatapult", "Senator", "Siedler"],
+    "gauls":["Phalanx", "Schwertkämpfer", "Späher", "Theutates Blitz", "Druidenreiter", "Haeduaner", "Rammholz", "Kriegskatapult", "Häuptling", "Siedler"],
+    "teutons":["Keulenschwinger", "Speerkämpfer", "Axtkämpfer", "Kundschafter", "Paladin", "Teutonen Reiter", "Ramme", "Katapult", "Stammesführer", "Siedler"]
+}
