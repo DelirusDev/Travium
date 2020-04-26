@@ -154,7 +154,7 @@ public class Travium {
         // pars troop names from farmlist!!!
         int amountTroops = Integer.parseInt(troopsTable.get(this.troops[3]));
         this.shuffleFarmList();
-        int counter = 1;
+        int counter = 0;
 
         // go farming
         while(true) {
